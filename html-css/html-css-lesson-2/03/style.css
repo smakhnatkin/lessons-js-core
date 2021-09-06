@@ -1,0 +1,35 @@
+
+/* Поток */
+
+
+.students__student {
+    float: left;
+    display: block;
+    vertical-align: bottom;
+
+    background: darkgray;
+    width: 300px;
+    min-height: 100px;
+
+    padding: 20px;
+    margin-bottom: 20px;
+
+    /* border: 20px solid yellow;
+    outline: 2px solid black; */
+}
+.students__student_second {
+    /* margin-top: -40px;
+    margin-left: 20px; */
+}
+
+.students__error {
+    width: 10%;
+    background: blueviolet;
+    height: 50px;
+
+    float: left;
+    margin-right: 20px;
+
+
+    /* margin-bottom: 10px; */
+}

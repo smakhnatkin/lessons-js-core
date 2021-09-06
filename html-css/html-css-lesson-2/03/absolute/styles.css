@@ -1,0 +1,23 @@
+.article {
+    position: static;
+    width: 50%;
+    margin-bottom: 1rem;
+    background: lightgoldenrodyellow;
+    padding: 1rem;
+} 
+.article_absolute_emample {
+    position: absolute;
+    top: -10px;
+    left: 30px;
+    background: lightpink;
+}
+.article_relative_conatainer_emample {
+    position: relative;
+}
+.article__text_absolute_conatainer_example {
+    position: absolute;
+    top: -10px;
+    left: 150px;
+    width: 100%;
+    background: lightgray;
+}

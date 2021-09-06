@@ -1,0 +1,7 @@
+.article {
+    position: static;
+    width: 50%;
+    margin-bottom: 1rem;
+    background: lightgray;
+    padding: 1rem;
+} 

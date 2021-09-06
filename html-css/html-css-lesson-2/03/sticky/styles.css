@@ -1,0 +1,14 @@
+.article {
+    position: static;
+    width: 50%;
+    margin-bottom: 1rem;
+    background: lightgoldenrodyellow;
+    padding: 1rem;
+} 
+.article_sticky_emample {
+    position: sticky;
+    top: 100px;
+    left: 0;
+    background: lightpink;
+}
+

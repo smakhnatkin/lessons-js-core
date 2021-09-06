@@ -1,27 +1,29 @@
 <html>
     <head>
         <meta charset="utf-8" />
-        <!-- <link href="./style-float.css" rel="stylesheet"/>         -->
-        <!-- <link href="./style-inline-block.css" rel="stylesheet"/>         -->
-        <!-- <link href="./style.css" rel="stylesheet"/>         -->
-        <!-- <link href="./style-position.css" rel="stylesheet"/> -->
-        <link href="./style-flex.css" rel="stylesheet"/>        
+        <link href="../../../common/styles/reset.css" rel="stylesheet"/>        
+        <link href="./style.css" rel="stylesheet"/>        
         <title>HTML и CSS. Урок 3</title>
+        <script src="./script.js"></script>
     </head>
 
     <body>
-        <header class="heder">
-            <div class="gallery__slides">
-                <ul class="slides">
-                    <li class="slides__slide"></li>
-                    <li class="slides__slide"></li>
-                    <li class="slides__slide"></li>
-                    <li class="slides__slide"></li>
-                    <li class="slides__slide"></li>
-                    <li class="slides__slide"></li>
-                    <li class="slides__slide"></li>
-                    <li class="slides__slide slides__slide_last"></li>
+        <header class="header">
+            <div class="menu">
+                <ul class="nav">
+                    <li class="nav__item">О проекте</li>
+                    <li class="nav__item">Галерея</li>
+                    <li class="nav__item">Ученики</li>
+                    <li class="nav__item">Преподаватели</li>
+                    <li class="nav__item nav__item_last">
+                        ...
+                        <ul class="nav-addition">
+                            <li class="nav-addition__item">Что-то еще</li>
+                            <li class="nav-addition__item">И другое</li>
+                        </ul>
+                </li>
                 </ul>
+                <button class="show-modal">Показать модальное окно</button>
             </div>
         </header>
     </body>

@@ -1,0 +1,14 @@
+.article {
+    position: static;
+    width: 50%;
+    margin-bottom: 1rem;
+    background: lightgoldenrodyellow;
+    padding: 1rem;
+} 
+.article_fixed_emample {
+    position: fixed;
+    top: -10px;
+    left: 30px;
+    background: lightpink;
+}
+

@@ -1,0 +1,61 @@
+/* базовые настройки для всего проекта */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+}
+
+/******************************************/
+/* Блок "Контейнер" */
+.container {
+    margin: 3rem auto 2rem;
+    max-width: 600px;
+}
+
+/******************************************/
+/* Блок "Секция" */
+.section {
+    margin-bottom: 2rem;
+}
+
+/******************************************/
+/* Блок "Шапка" */
+.header {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background: lightcyan;
+}
+
+.header__title {
+    font-size: 2rem;
+}
+
+.header__back-link {
+    display: block;
+    color: cornflowerblue;
+    text-decoration: none;
+    font-size: .8125rem;
+    text-align: right;
+}
+.header__back-link:hover {
+    color: darkblue;    
+}
+
+/******************************************/
+/* Блок "Список тем" */
+.themes {
+    display: block;
+    margin-bottom: 1rem;
+}
+.themes__theme {
+    list-style: none;
+    margin-bottom: 0.5rem;
+    padding: 0 1rem;
+}
+.themes__link {
+    color: cornflowerblue;
+    text-decoration: none;
+}
+.themes__link:hover {
+    color: darkblue;
+}
+

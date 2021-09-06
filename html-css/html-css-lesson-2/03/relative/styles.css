@@ -1,0 +1,17 @@
+.article {
+    position: static;
+    width: 50%;
+    margin-bottom: 1rem;
+    background: lightgoldenrodyellow;
+    padding: 1rem;
+} 
+.article_relative-example {
+    background: lightgray;
+
+    position: relative;
+    top: -80px;
+    right: 30px;
+
+    /* margin-top: -80px;
+    margin-left: 30px; */
+}

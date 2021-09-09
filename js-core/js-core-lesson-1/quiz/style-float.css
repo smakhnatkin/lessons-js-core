@@ -1,19 +1,14 @@
 
-
 body {
     margin-top: 4rem;
 }
 .gallery {
 	width: 1000px;
-    margin: 0 auto;
-
-    position: relative;
+	margin: 0 auto;
 }
 .gallery__info {
+    float: left;
     width: 30%;
-    position: absolute;
-    left: 0;
-    top: 0;
 
     height: 400px;
     background: lightgray;
@@ -23,10 +18,8 @@ body {
     box-sizing: border-box;
 }
 .gallery__main-slide {
+    float: left;
     width: 70%;
-    position: absolute;
-    right: 0;
-    top: 0;
 
     height: 400px;
     background: lightslategrey;
@@ -36,12 +29,10 @@ body {
     color: white;
 }
 .gallery__slides {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 400px;
-    
+    /* clear: both; */
+
     padding: 3rem 1rem;
+	flex: 0 1 100%;
     background: lightskyblue;
 }
 

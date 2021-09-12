@@ -1,75 +1,57 @@
-
 body {
-    margin-top: 4rem;
-    font-size: 16px;
+    padding: 2rem;
 }
-.menu {
-    width: 800px;
-    margin: 0 auto;
-    background: rgb(230, 230, 230);
-    padding: 2rem 2rem 1rem 2rem;
+br {
+    margin-bottom: 2rem;
 }
-.nav {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 1rem;
-}
-.nav__item {
-    list-style: none;
-    padding: 0.5rem 1.5rem;
-    border: 1px solid rgb(47, 118, 118);
-    border-radius: 5px;
-    background: rgb(87, 157, 144);
-    color: white;
-    font-family: Arial, Helvetica, sans-serif;
-}
-.nav__item:hover {
-    background: rgb(60, 138, 161);
-    border: 1px solid rgb(41, 73, 88);
-    cursor: pointer;
-}
-
-.nav__item_last {
-    text-indent: -9999px;
-    position: relative;
-}
-.nav__item_last::after {
-    content: '|||';
-    font-weight: bold;
-    position: absolute;
-    top: 4px;
-    left: 8px;
-    display: block;
-    width: 2rem;
-    text-indent: 0;
-    transform: rotate(90deg);
-    height: 2rem;
+.ball {
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-
-.show-modal {
-    display: none;
-}
-
-.nav-addition {
-    opacity: 0;
-    transition: opacity 100ms ease-in;
-    position: absolute;
-    top: 3rem;
-    right: 0;
-    text-indent: 0;
     width: 200px;
-    background: rgb(60, 138, 161);
+    height: 200px;
+    border-radius: 50%;
+
+    background: rgba(0, 94, 93, 1);
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    cursor: pointer;
+
+    transition-property: transform, font-size;
+    transition-duration: 1s;
+    transition-timing-function: ease-in-out;
 }
-.nav-addition__item {
-    padding: 0.5rem 1rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.8);
+.ball:hover {
+    transform: rotate(360deg);
+    font-size: 4rem;
 }
 
-.nav__item_last:hover .nav-addition {
-    opacity: 1;
+@keyframes cubeRotate {
+    from {
+        font-size: 1rem;
+        transform: rotate(0);
+    }
+    to {
+        font-size: 4rem;
+        transform: rotate(360deg);
+    }
+}
+.cube {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 200px;
+
+    background: rgb(55, 0, 94);
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    cursor: pointer;
+}
+.cube:hover {
+    animation-name: cubeRotate;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: both;
 }
 

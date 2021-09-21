@@ -1,0 +1,13 @@
+.icon {
+    width: 2rem;
+    height: 2rem;
+    font-family: cursive;
+}
+
+.icon_safe {
+    background-position: 50px 57px;
+}
+
+.icon_iron {
+    background-position: 50px 57px;
+}

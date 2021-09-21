@@ -1,0 +1,103 @@
+
+body {
+    padding: 4rem;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.wrapper {
+
+}
+
+.Lists____3qQCu, .Lists_table__2IjMW {
+
+    display: flex;
+
+    overflow: hidden;
+
+    flex-direction: column;
+
+    height: 100%;
+
+}
+
+ 
+
+.Filter____2lCF4, .Footer____1RpEd {
+
+    font-size: 13px;
+
+    display: flex;
+
+    align-items: center;
+
+}
+
+ 
+
+.Lists____3qQCu, .Lists_table__2IjMW {
+
+    display: flex;
+
+    overflow: hidden;
+
+    flex-direction: column;
+
+    height: 100%;
+
+}
+
+ 
+
+.Footer____1RpEd {
+
+    height: 3.5rem;
+
+    padding: 0px 1rem;
+
+    background: rgb(var(--gs-092));
+
+}
+
+ 
+
+.Filter____2lCF4 {
+
+    min-height: 3rem;
+
+    padding: 1rem;
+
+    background: rgb(var(--low-blue-300));
+
+    justify-content: space-between;
+
+}
+
+ 
+
+.Sort____3JGKk {
+
+    padding-right: var(--scroll-width);
+
+    border-left: 4px solid transparent;
+
+    background: rgb(var(--gs-092));
+
+}
+
+.Lists_list__3Da-j {
+
+    overflow-y: scroll;
+
+    height: 100%;
+
+}
+
+.Sort_wrapper__1HJsM {
+    display: flex;
+    background: rgba(0, 0, 0, 0.3);
+}
+.List____dWugP {
+    display: flex;
+    justify-content: space-between;
+}

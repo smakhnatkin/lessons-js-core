@@ -1,0 +1,23 @@
+
+body {
+    padding: 4rem;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: repeat(3, minmax(150px, 1fr));
+    grid-gap: 1rem;
+}
+.item {
+    padding: 1rem;
+    background-color: rgb(214, 201, 180);
+}
+.item-2 {
+    grid-column: 2/4;
+}
+.item:nth-child(2n) {
+    background-color: rgb(101, 174, 238);
+}

@@ -1,0 +1,130 @@
+
+body {
+    padding-top: 4rem;
+    font-size: 16px;
+    position: relative;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Блок «Обертка» */
+.wrapper {
+    margin: 0 auto;
+    width: 800px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+/* Блок «Меню» */
+.menu {
+    background: rgb(230, 230, 230);
+    padding: 2rem 2rem 1rem 2rem;
+    margin-bottom: 1rem;
+}
+
+/* Блок «Навигация» */
+.nav {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+.nav__item {
+    list-style: none;
+    padding: 0.5rem 1.5rem;
+    border: 1px solid rgb(47, 118, 118);
+    border-radius: 5px;
+    background: rgb(87, 157, 144);
+    color: white;
+}
+.nav__item:hover {
+    background: rgb(60, 138, 161);
+    border: 1px solid rgb(41, 73, 88);
+    cursor: pointer;
+}
+.nav__item_last {
+    text-indent: -9999px;
+    position: relative;
+}
+.nav__item_last::after {
+    content: '|||';
+    font-weight: bold;
+    position: absolute;
+    top: 4px;
+    left: 8px;
+    display: block;
+    width: 2rem;
+    text-indent: 0;
+    transform: rotate(90deg);
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.show-modal {
+    display: block;
+}
+
+.nav-addition {
+    opacity: 0;
+    transition: opacity 100ms ease-in;
+    position: absolute;
+    top: 3rem;
+    right: 0;
+    text-indent: 0;
+    width: 200px;
+    background: rgb(60, 138, 161);
+}
+.nav-addition__item {
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.nav__item_last:hover .nav-addition {
+    opacity: 1;
+}
+
+/* Блок «Главное содержимое» */
+.main {
+    line-height: 1.5rem;
+}
+
+/* Блок «Параграф» */
+.paragraph {
+    margin-bottom: 1rem;
+}
+
+/* Блок «Модальное окно» */
+.modal {
+   position: fixed; 
+   top: 0;
+   display: flex; 
+   align-items: center;
+   justify-content: center;
+   height: 100%;
+   width: 100%;
+
+   font-family: Arial, Helvetica, sans-serif;
+   font-size: 1rem;
+   background-color: rgba(1, 1, 1, 0.1);
+   backdrop-filter: blur(5px);
+}
+.modal__window {
+    width: 500px;
+    height: 300px;
+    padding: 2rem 2rem 0 2rem;
+    border-radius: 10px;
+    color: white;
+    background-color: rgb(30, 43, 67);
+}
+.modal__header {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+.modal__text {
+    margin-bottom: 1rem;
+}
+
+.modal_hiiden {
+    display: none;
+}

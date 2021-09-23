@@ -1,0 +1,57 @@
+body {
+    padding: 2rem;
+}
+br {
+    margin-bottom: 2rem;
+}
+.ball {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+
+    background: rgba(0, 94, 93, 1);
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    cursor: pointer;
+
+    transition-property: transform, font-size;
+    transition-duration: 1s;
+    transition-timing-function: ease-in-out;
+}
+.ball:hover {
+    transform: rotate(360deg);
+    font-size: 4rem;
+}
+
+@keyframes cubeRotate {
+    from {
+        font-size: 1rem;
+        transform: rotate(0);
+    }
+    to {
+        font-size: 4rem;
+        transform: rotate(360deg);
+    }
+}
+.cube {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 200px;
+
+    background: rgb(55, 0, 94);
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    cursor: pointer;
+}
+.cube:hover {
+    animation-name: cubeRotate;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: both;
+}
+

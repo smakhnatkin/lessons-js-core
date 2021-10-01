@@ -42,6 +42,42 @@ i++;        // i = i + 1;  // 5; i === 6
 
 
 
-if ('Вася'.indexOf('vv') === 1) {
+if (~'Вася'.indexOf('vv')) {
     alert('нашли!');
 } 
+
+
+if (true && true) {
+    alert('работает');
+}
+
+
+if (false || true) {
+    alert('работает');
+}
+
+
+if (1 > '2') {
+    alert();
+}
+
+
+
+if (str.length) {
+
+}
+
+
+// 
+
+let someObj1 = {
+    a: 100
+}
+let someObj2 = someObj1;
+
+let someObj2 = {};
+
+someObj2.a = 10;
+
+console.log(someObj1.a); // 10
+

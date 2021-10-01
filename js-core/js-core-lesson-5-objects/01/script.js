@@ -2,59 +2,339 @@
 
 // ================================================
 // методы объекта
-let obj = {					    // объект
-	name: 'Что-то',			    // поле
-	getSome: function() {       // метод
-        return 15;
-    },	    
-    x: 100
-};
-
-function F() {
-    return 15;
+let obj = {					// объект
+	name: 'Что-то',			// свойством
+	getSome: function() {},	// метод
+	obj2: {
+		x: {
+			y: 1
+		}
+	}
 }
 
-console.log(F);                 // function F() { return 15; }
-console.log(F());               // 15
-
-console.log(obj.x);             // 100
-console.log(obj.getSome);       // function() { return 15; }
-
-console.log(obj.getSome());     // ?
+obl.getSome()				// вызов метода
 
 
+alert(obj.obj2.x.y)
+
+// =========
+let user = {
+	name: 'Лилия',
+	age: 22
+};
+
+user.name = 'Петр'
+console.log(user);
+
+// {
+// 	name: 'Петр',
+// 	age: 22
+// }
 
 
-obj.getSome()				    // вызов метода
+// ========
+const user = {
+	name: 'Лилия',
+	age: 22
+};
 
-// строка, которая ведет себя как объект
-let str = 'some';			    // строка
-str.toUpperCase();			    // вызов метода 
+user.name = 'Петр';
 
-// число, которое ведет себя как объект
-let double = 12.34;			    // число
-double.toFixed();				// вызов метода
+const user2 = user;
 
-// запись свойства в объект
-obj.some = 5;
-console.log(obj.some)           // 5
-
-// запись свойства в примитив
-str.some = 5;                   // ошибка
+user2.name = 'Жанна';
+console.log(user.name); // Жанна
 
 
-// ================================================
-// использование специальных классов
+let someObj = {};
+someObj = {
+	name: 'Иван'
+}
 
-// new – всегда создает новый объект, экземпляр класса
-// new ИмяФункцииКонстроуктора() – вернет объект
-// ИмяФункции() – просто выполнение функции
+// =========
 
-let num;
-num = new Number(0);			// не использовать вместе с new
-typeof num;						// object
+// let student1 = {};
+// let student2 = {};
 
-num = Number('0');				// явное преобразование типа
-typeof num;						// number
+// if (student1 === student2) {
+// 	alert('Один и тот же студент');
+// } else {
+// 	alelt('Разные студенты');  // <----
+// }
 
 
+// let student1 = {};
+// let student2 = student1;
+
+// if (student1 === student2) {
+// 	alert('Один и тот же студент'); // <----
+// } else {
+// 	alelt('Разные студенты');  
+// }
+
+// let student1 = {};			// 1
+// let student2 = student1;	// 1
+// student1 = {};				// 2
+
+// if (student1 === student2) {
+// 	alert('Один и тот же студент'); 
+// } else {
+// 	alelt('Разные студенты');  // <----
+// }
+
+
+
+// let student1 = {
+// 	name: 'Иван'
+// };			
+// let student2 = student1;	
+// student1 = {
+// 	name: 'Иван'
+// };				
+
+// if (student1.name === student2.name) {  // 'Иван' === 'Иван'
+// 	alert('Один и тот же студент'); // <----
+// } else {
+// 	alelt('Разные студенты');  
+// }
+
+
+// let student1 = {
+// 	x: {
+// 		name: 'Иван'
+// 	}
+// };			
+// let student2 = student1;	
+// student1 = {
+// 	x: {
+// 		name: 'Иван'
+// 	}
+// };				
+
+// if (student1.x === student2.x) {  
+// 	alert('Один и тот же студент'); 
+// } else {
+// 	alelt('Разные студенты');  // <----
+// }
+
+let student1 = {
+	x: {
+		name: 'Иван'
+	}
+};			
+let student2 = student1;	
+student1 = {
+	x: student2.x
+};				
+
+if (student1.x === student2.x) {  
+	alert('Один и тот же студент'); // <----
+} else {
+	alelt('Разные студенты');  
+}
+
+
+// 1) сравнивают ссылки
+// student2 === student1
+// 2) поверхностое сравнение shallowEqual
+// 3) глубокое сравнение
+// сравнивать полную вложенность
+
+// lodash – библиотека удобных функций 
+
+
+// shallowEqual
+
+const getUserName = () => 'Вася';
+const getUserSurname = () => 'Семенов';
+
+// const sendUser = ({ name }) => {
+// 	console.log(name);
+// };
+
+// const sendUser = (user) => {
+// 	const { name } = user;
+// 	console.log(name);
+// };
+
+const sendUser = (user) => {
+	const name = user.name;
+	console.log(name);
+};
+
+// const userName = getUserName();
+// const userSurname = getUserSurname();
+
+// const user = {
+// 	name: userName,
+// 	surname: userSurname,
+// };
+
+// sendUser(user);
+
+// // ---------------
+// const name = getUserName();
+// const surname = getUserSurname();
+
+// const user = {
+// 	name: name,
+// 	surname: surname,
+// };
+
+// sendUser(user);
+
+
+// // ---------------
+// const name = getUserName();
+// const surname = getUserSurname();
+
+// const user = {
+// 	name,
+// 	surname,
+// };
+
+// sendUser(user.name); // 'Вася'
+
+
+// ---------------
+const name = getUserName();
+const surname = getUserSurname();
+
+const user = {
+	name,
+	surname,
+};
+
+sendUser(user); // 'Вася'
+
+
+
+// const user = {
+// 	name,
+// 	surname,
+// };
+
+// const { name, surname } = user;
+
+// установочная встреча
+const some = {
+	list: [{
+		name: 'Иван'
+	}, {
+		name: 'Света'
+	}, {
+		name: 'Лиза'
+	}],
+
+	count: 15,
+
+}
+
+const styles = {
+	list: '',
+	item: ''
+}
+
+
+
+
+const aaa = {
+	sss: '111'
+}
+
+// const aaa = 'sdfsfsdf';
+
+const sss = aaa.sss; // '111'
+const { sss } = aaa; // '111'
+ 
+// https://learn.javascript.ru/destructuring-assignment
+
+
+const mm = {
+	dd: {
+		ff: '222' 
+	}
+}
+
+// const ff = mm.dd.ff;
+const { dd: { ff } } = mm;
+
+console.log(ff); // '222'
+
+
+const handleChange = (event) => {
+	const value = event.target.value;
+	console.log(value);
+}
+
+
+const handleChange = ({ target: { value }}) => {
+	// ...
+	console.log(value);
+}
+
+
+const arr = ['1', '2', '3'];
+
+
+console.log(a, b, c) // '1', '2', '3'
+
+const a = arr[0];
+const b = arr[1];
+const c = arr[2];
+
+// React Hook useState
+const [a, b, c] = arr;
+
+
+
+// деструкторизация еще одна
+// ...
+
+const animal = {
+	type: {
+		name: ''
+	}
+};
+
+const { type: { name } } = animal;
+
+const dog = {
+	type: {
+		name
+	}
+}
+
+// lodash 
+// clone(a, b)
+
+
+// 1) копирование ссылки
+// const student2 = student1
+// 2) поверхностое копирование Object.assign()
+// 3) глубокое копирование
+// lodash
+
+
+const animalMaybeClone = Object.assign({}, animal);
+
+const event = {
+	time: '10:01',
+	state: 'И'
+}
+const event1 = {
+	time: '10:02',
+	state: event.state + 'в'
+}
+const event3 = {
+	time: '10:03',
+	state: event1.state + 'а'
+}
+
+const x = {}
+const x1 = Object.assign({}, x)
+const x2 = Object.assign({}, x1)
+
+const event4 = { ...event }
+
+// ...

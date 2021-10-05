@@ -335,6 +335,62 @@ const x = {}
 const x1 = Object.assign({}, x)
 const x2 = Object.assign({}, x1)
 
-const event4 = { ...event }
+// создание нового объекта из старого
+const event4 = { 
+	...event,
+	time: '10:05',
+}
 
+
+const fructs = ['яблоко', 'ананас'];
+const fructs2 = [...fructs];
+
+fructs[0]
+
+event4.time;
+event4['time'] // динамика
+
+
+const getKey = () => 'time';
+const key = getKey();
+
+event[key]
 // ...
+
+
+
+// x x x x
+// x x x x 
+// x x x x 
+
+
+// O(N2) - плохо
+// O(N) – норм
+
+// O(log(N)) - 1/3 O(N)
+// O(1)
+
+movies['33'] // O(1)
+
+
+
+const fructs = [{
+	id: '15',
+	name: 'Сергей'
+}, {
+	id: '16',
+	name: 'Сергей'
+}]
+
+
+const fructs = {
+	'15': {
+		id: '15',
+		name: 'Сергей'
+	}, 
+	'16': {
+		id: '16',
+		name: 'Сергей'
+	}}
+
+// 	fructs['15'].name

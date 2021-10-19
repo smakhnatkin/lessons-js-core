@@ -332,11 +332,28 @@ sum2021(20);
 sum2021(32);
 sum2021(56);
 
-const createSome = (func, param) => {
+const bind = (func, context, param) => {
 	return (...args) => {
-		func(param, ...args);
+		func.apply(context, [param, ...args]);
 	};
 }
+
+
+const counts = {
+	some: 0 // 12
+}
+
+
+function sum(a, b) {
+	this.some = a + b;
+}
+
+
+const countsSum12 = bind(sum, counts, 12)
+countsSum12(6) // counts.some = 18;
+countsSum12(2) // counts.some = 14;
+countsSum12(2) // counts.some = 14;
+
 
 const sum2021 = createSome(sum, 2021);
 
@@ -346,18 +363,52 @@ const sum2021 = createSome(sum, 2021);
 
 // this ================================
 
+// контекст 
+
 let obj = {
 	name: 'Вася',
 	getName: function() {
-		return this.name;
+		return this.name;  // что-то размытое по смыслу
 	}
 }
+
 const x = obj;
 const y = obj;
 obj = null;
 
 x.name = 'Сережа'
-y.name = 'Марина'
 
-x.getName();
-y.getName();
+x.getName();			// Сережа
+obj.getName();
+
+
+
+
+const f1 = (a, b, c) => {}
+const f2 = (b, c) => {
+	f1(2, b, c)
+}
+const f3 = (c) => {
+	f2(3, c)
+}
+
+
+
+createStudent('МФТИ', 'Улица такая-то', '45', '123123', 'Петров');
+createStudent('МФТИ', 'Улица такая-то', '45', '123123', 'Сидоров');
+createStudent('МФТИ', 'Улица такая-то', '45', '123123', 'Петров');
+createStudent('МФТИ', 'Улица такая-то', '45', '123123', 'Петров');
+createStudent('МФТИ', 'Улица такая-то', '45', '123123', 'Петров');
+createStudent('МФТИ', 'Улица такая-то', '45', '123123', 'Петров');
+
+const createMFTIStudent = createStudent.bind({}, 'МФТИ', 'Улица такая-то', '45', '123123')
+
+createMFTIStudent('Иванов')
+createMFTIStudent('Петров')
+
+
+
+
+
+
+

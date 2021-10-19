@@ -484,3 +484,25 @@ console.log(users[id].name)
 
 
 
+
+
+
+
+// циклы?
+
+// for (key in obj) {}
+// while
+// do while 
+
+// циклы, которые используем
+// for (let i = 0; i < arr.length; i++) {}
+// for (item of array) {}
+
+// методы массива
+// const x = {};
+// .forEach((item, index) => {
+// 		if () {
+// 			x[index] = item
+// 		}
+// })
+// .map 			

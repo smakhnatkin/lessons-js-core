@@ -1,363 +1,305 @@
 'use strict';
 
+// 1 Global контекст ---------------------------------
 
-// function F1() {		// 1 – декларативный
-// 	let x = 1;
-// 	console.log(x);	// 1
-// 	return x;
-// }
-// (function F1() {		// 2 – выражение
-// 	return x;
-// })
+console.log(this);
 
 
-// function F1() {		// 1 – декларативный
-// 	console.log(x);	// ошибка: x не объявлен
-// 	let x = 1;
-// 	return x;
-// }
 
-F1()
 
-function F1() {		
-	console.log(x);	// undefined
-	var x = 1;
-	return x;		// 1
+
+
+// В браузерах, объект window также является объектом global:
+console.log(this === window); // true
+
+a = 37;
+console.log(window.a); // 37
+
+this.b = "MDN";
+console.log(window.b)  // "MDN"
+console.log(b)         // "MDN"
+
+
+
+// 2 Function контекст -------------------------------
+
+function f1(){
+	return this;
 }
 
-// hosting переменных (всплытие переменных)
-// 1. объявления функций деклараций
-// 2. объявления var
-// 3. выполняет код построчно
+// В браузере:
+f1() === window; // window - глобальный объект в браузере
 
-// Чем пользоваться?
-// () => {} – для функций
-// const в 99% – декларативный подход
-// let в 1%
+// В Node:
+f1() === global; // global - глобальный объект в Node
 
-////////////////////////
 
-// const f = 2;
+function f2(){
+	"use strict"; // см. strict mode
+	return this;
+}
 
-const f = () => {};
-console.log( f );		// () => {}
-console.log( f() );		// undefined
+f2() === undefined; // true
 
-// () – вызов
-// у вызова всегда есть результат вызова (return)
-// если не задан, то undefined
 
 
-// ----------------
-const f2 = () => {
-	return 10;
-};
-console.log( f2 );			// () => { return 10; };
-console.log( f2() );		// 10
 
-// ----------------
-const f3 = () => 10;
 
-// примеры идентичны
-// синтаксический сахар
-// { return что-то.... =======> что-то...
 
-console.log( f3 );			// () => { return 10; }; тоже самое
-console.log( f3() );		// 10
 
 
 
 
-// пример из презентации
-// const makeSomeFunc = () => {
-// 	return;
-// };
 
-// console.log( makeSomeFunc() );	// undefined
 
 
-// const makeSomeFunc = () => {
-// 	return someFunc;		// код падает с ошибкой переменная не определена
-// };
 
-// const f = makeSomeFunc();
-	
-// console.log( f );	// ?
 
 
 
-// const makeSomeFunc = () => {
-// 	const someFunc = 1;
-// 	return someFunc;		
-// };
 
-// const f = makeSomeFunc();
-	
-// console.log( f );	// 1
 
 
-// const makeSomeFunc = () => {
-// 	const f = () => {};
-// 	const someFunc = () => {};	// 2
 
-// 	console.log(f !== someFunc); // true
-// 	return someFunc;		
-// };
 
-// const f = makeSomeFunc();
-	
-// console.log( f );	// () => {}; в строке 2
 
 
-// const x = () => {};
-// console.log(x); // () => {}
 
-// // ==================================
-// const makeSomeFunc = () => {
-// 	const someFunc = () => {};	// 2
 
-// 	return someFunc;		
-// };
-
-// const f = makeSomeFunc();
-	
-// console.log( f );	// () => {}; в строке 2
-
-
-
-
-// // ==================================
-// const makeSomeFunc = () => {
-// 	const someFunc = () => {
-// 		return 'что-то';
-// 	};	// 2
-
-// 	return someFunc;		
-// };
-
-// const f = makeSomeFunc();
-	
-// console.log( f );	// () => {}; в строке 2
-
-
-
-
-// // ==================================
-// const makeSomeFunc = () => {
-// 	const someFunc = () => {
-// 		return 10;
-// 	};
-
-// 	return someFunc;		
-// };
-
-// const f = makeSomeFunc();
-	
-// console.log( f );	// () => { return 10; }; в строке 2
-// console.log( f() );	// 10;
-
-
-
-
-// // ==================================
-// const makeSomeFunc = () => {
-// 	const someFunc = () => {
-// 		return 10;
-// 	};
-
-// 	return someFunc(); // 10
-// };
-
-// const f = makeSomeFunc();
-	
-// console.log( f );	// 10;
-
-
-
-// // ==================================
-// const makeSomeFunc = () => {
-// 	const someFunc = () => {
-// 		return 10;
-// 	};
-
-// 	return someFunc(); // 10
-// };
-
-// const f = makeSomeFunc();
-	
-// console.log( f );	// 10;
-
-
-// // ==================================
-// const makeSomeFunc = () => {	// 1
-// 	const someFunc = () => { // 2
-// 		let x = 10;
-// 		return x;
-// 	};
-
-// 	return someFunc;
-// };
-
-// const f = makeSomeFunc();		// содержимое 2
-	
-// console.log( f );				// содержимое 2
-// console.log( f() );				// 10
-
-
-
-// // ==================================
-// const makeSomeFunc = () => {	// 1
-// 	let x = 0;
-	
-// 	const someFunc = () => {	// 2
-// 		x = 10;
-// 		return x;
-// 	};
-
-// 	return someFunc;
-// };
-
-// const f = makeSomeFunc();		
-	
-// console.log( f );				// 
-// console.log( f() );				// 10
-
-
-
-// ==================================
-const makeSomeFunc = () => {	
-	let x = 0;						// создали x, записали 0
-	
-	const someFunc = () => {		// создали someFunc, записали в нее функцию
-		x = x + 10;
-		return x;
-	};
-	x = x + 10;						// x = 0 + 10 //	10
-
-	return someFunc;				// вернули функцию
-};
-
-const f = makeSomeFunc();		
-	
-console.log( f() );					// 20
-
-
-
-// =============================
-function makeArmy() {
-	let shooters = [];
+// 3 Метод bind ---------------------------------------
+function f() {
+	return this.a;
+  }
   
-	let i = 0;
-	while (i < 10) {
-		(function(j) {
-			let shooter = function() { // функция shooter
-				alert( j ); // должна выводить порядковый номер
-			};
-			shooters.push(shooter);
-			i++;
-		})(i);
+var g = f.bind({a: 'azerty'});
+console.log(g()); // azerty
+
+var h = g.bind({a: 'yoo'}); // bind only works once!
+console.log(h()); // azerty
+
+var o = {a: 37, f: f, g: g, h: h};
+console.log(o.a, o.f(), o.g(), o.h()); // 37,37, azerty, azerty
+
+
+
+// 4 Стрелочные функции -------------------------------
+var globalObject = this;
+var foo = (() => this);
+console.log(foo() === globalObject); // true
+
+
+
+// 5 В методе объекта ---------------------------------
+var o = {
+	prop: 37,
+	f: function() {
+		return this.prop;
 	}
+};
+
+console.log(o.f()); // logs 37
+
+
+
+// 6 this в цепочке object's prototype ----------------
+var o = {f:function(){ return this.a + this.b; }};
+var p = Object.create(o);
+p.a = 1;
+p.b = 4;
+
+console.log(p.f());
+
+
+
+// 7 this с геттерами/сеттерами -----------------------
+function modulus(){
+	return Math.sqrt(this.re * this.re + this.im * this.im);
+  }
   
-	return shooters;
+  var o = {
+	re: 1,
+	im: -1,
+	get phase(){
+	  return Math.atan2(this.im, this.re);
+	}
+  };
+  
+  Object.defineProperty(o, 'modulus', {
+	  get: modulus, enumerable:true, configurable:true});
+  
+  console.log(o.phase, o.modulus); // logs -0.78 1.4142
+
+
+  
+  // 8 В конструкторе ---------------------------------
+  function C() {
+	this.a = 37;
+  }
+  
+  var o = new C();
+  console.log(o.a); // logs 37
+  
+  
+  function C2() {
+	this.a = 37;
+	return {a: 38};
+  }
+  
+  o = new C2();
+  console.log(o.a); // logs 38
+
+
+
+  // 9 call и apply -----------------------------------
+  function add(c, d) {
+	return this.a + this.b + c + d;
+  }
+  
+  var o = {a: 1, b: 3};
+  
+  // Первый параметр - это объект, который следует использовать как
+  // 'this', последующие параметры передаются
+  // как аргументы при вызове функции
+  add.call(o, 5, 7); // 1 + 3 + 5 + 7 = 16
+  
+  // Первый параметр - объект, который следует использовать как
+  // 'this', второй параметр - массив,
+  // элементы которого используются как аргументы при вызове функции
+  add.apply(o, [10, 20]); // 1 + 3 + 10 + 20 = 34
+
+
+
+  // 10 Как обработчик событий DOM --------------------
+  // Когда вызывается как обработчик, связанный элемент становится синим
+function bluify(e) {
+	// Всегда true
+	console.log(this === e.currentTarget);
+	// true, когда currentTarget и target один объект
+	console.log(this === e.target);
+	this.style.backgroundColor = '#A5D9F3';
+  }
+  
+  // Получить список каждого элемента в документе
+  var elements = document.getElementsByTagName('*');
+  
+  // Добавить bluify как обработчика кликов, чтобы при
+  // нажатии на элемент он становился синим
+  for (var i = 0; i < elements.length; i++) {
+	elements[i].addEventListener('click', bluify, false);
   }
 
-  let army = makeArmy();
-
-  army[0](); // у 0-го стрелка будет номер 10
-  army[5](); // и у 5-го стрелка тоже будет номер 10
-  // ... у всех стрелков будет номер 10, вместо 0, 1, 2, 3...
 
 
-  
- 
+  // 11 В инлайновом обработчике событий ---------------
+<button onclick="alert(this.tagName.toLowerCase());">
+	Показать this
+</button>
 
 
-  // замыкание
 
 
-// ==================================
-const makeSomeFunc = () => {	// 1
-	let x = 0;
-	
-	const someFunc = () => {	// 2
-		x = 10;
-		return x;
-	};
 
-	return someFunc;
+
+
+const func = function() {
+	'use strict';
+	return this;
 };
 
-const f = makeSomeFunc();		// отработала	
-
-	
-console.log( f );				// 
-console.log( f() );				// 10
-
-
-
-
-const print = (a, b, c) => {
-
-}
-
-const printName = () => {
-
-}
-
-const myApi = {
-	print: (str)	=> {
-		alert('Привет, я ' + str);
-		return undefined;
-	}
-}
-
-myApi.print('Сергей');
-
-// ======================
-const sum = (a, b) => {
-	return a + b;
-}
-
-sum(2021, 15);
-sum(2021, 20);
-sum(2021, 32);
-sum(2021, 56);
-
-const sum2021 = a => {
-	return 2021 + a; 
-}
-
-sum2021(15);
-sum2021(20);
-sum2021(32);
-sum2021(56);
-
-const createSome = (func, param) => {
-	return (...args) => {
-		func(param, ...args);
+const func3 = function() {
+	return () => {
+		'use strict';
+		return this;
 	};
+	
 }
 
-const sum2021 = createSome(sum, 2021);
-
-// HOC - high order componet 
+const func4 = func3();
 
 
 
-// this ================================
+// const person = {
+// 	name: 'Иван',
+// 	getName: function() {
+// 		return this.name;
+// 	}
+// }
 
-let obj = {
-	name: 'Вася',
-	getName: function() {
+
+// console.log(person.getName()); // Иван
+
+
+// const person = {
+// 	name: 'Иван',
+// 	getName: () => {
+// 		return this;
+// 	}
+// }
+
+
+// console.log(person.getName()); // undefined
+
+
+// 'use strict'
+// const person = {
+// 	name: 'Иван',				// приватный
+// 	getName: function() {		// геттер
+// 		return this.name;
+// 	},
+// 	setName: function(name) {	// сеттер
+// 		this.name = name
+// 	}
+// }
+
+
+// // console.log(person.getName()); // Иван
+
+// const { getName } = person;
+
+// console.log(getName());
+
+
+
+
+// person.setName('Василий');
+// person.getName() // Василий
+
+
+
+
+const person = {
+	name: 'Иван',				// приватный
+	getName: function() {		// геттер
 		return this.name;
+	},
+	setName: function(name) {	// сеттер
+		this.name = name
 	}
 }
-const x = obj;
-const y = obj;
-obj = null;
 
-x.name = 'Сережа'
-y.name = 'Марина'
+const { setName, getName } = person;
 
-x.getName();
-y.getName();
+
+const student = {
+	name: ''
+};
+
+// student.setName
+
+const setStudentName = setName.bind(student);
+setStudentName('Надежда')
+
+console.log(student.name);
+
+
+
+
+
+
+const doublePow = Math.pow.bind({}, 2);
+
+doublePow(3) 
+
+// call/apply
+
+setName.call(student, 'Эля');
